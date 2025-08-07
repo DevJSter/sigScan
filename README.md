@@ -1,53 +1,92 @@
 # SigScan - Smart Contract Signature Scanner
 
-## IMPLEMENTATION COMPLETE - READ```
-sigScan/                                 COMPLETE
-├── src/
-│   ├── core/                           Co- Scan and info commands working
-- Watch framework implemented
-- All output formats working
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![VS Code Extension](https://img.shields.io/badge/VS%20Code-Extension-blue.svg)](https://marketplace.visualstudio.com/vscode)
+[![Node.js](https://img.shields.io/badge/Node.js-16%2B-green.svg)](https://nodejs.org/)
 
-### Phase 3: VS Code Extension - **READY**
-- Extension framework complete
-- Packaging and publishing (next step)
-- Testing and refinement (next step)
+A comprehensive tool that automatically scans Solidity smart contracts and generates function signatures, event topics, and error selectors with their corresponding method hashes. Available as both a VS Code extension and CLI tool.
 
-### **LIVE RESULTS**nality working
-│   │   ├── scanner.ts                  Contract scanning
-│   │   ├── parser.ts                   Solidity parsing  
-│   │   ├── watcher.ts                  File watching
-│   │   └── exporter.ts                 Multi-format export
-│   ├── cli/                            CLI tool working
-│   │   └── index.ts                    Scan, info, watch commands
-│   ├── extension/                      VS Code extension ready
-│   └── utils/                          Helper functions
-├── dist/                               Built and ready
-├── examples/                           Working test contracts
-└── signatures/                         Generated output filesCore Concept **WORKING**
-A tool in VS Code or your favorite text editor/code editor which can go through all the contracts in the `src/` folder for a Foundry/Hardhat project and goes through each function and generates the calldata method hash.
+## 🚀 Quick Start
 
-**Example - Now Working:**
+### VS Code Extension (Recommended)
+
+1. **Install the extension**:
+   ```bash
+   code --install-extension sigscan-0.1.0.vsix
+   ```
+
+2. **Open your Solidity project** in VS Code
+
+3. **Run the scanner**:
+   - Press `Ctrl+Shift+P`
+   - Type "SigScan: Scan Project for Signatures"
+   - Press Enter
+
+4. **View generated signatures** in the `signatures/` folder
+
+### CLI Tool
+
 ```bash
-# Our tool now does this automatically:
-createPair(address,address) --> 0xc9c65396
-transfer(address,uint256)   --> 0xa9059cbb
+# Scan a project
+npm run cli scan --path ./your-project
+
+# Get project info
+npm run cli info --path ./your-project
+
+# Watch for changes
+npm run cli watch --path ./your-project
 ```
 
-**REQUIREMENT FULFILLED:** 
-The tool automatically detects changes in `contracts/src` folder and updates signatures in real-time! No need to use `cast` manually anymore.
+## 📖 Documentation
 
-**FOR DEVS - OUTPUT GENERATED:**
+- **[Extension Guide](docs/EXTENSION_GUIDE.md)** - Complete installation and usage guide
+- **[Contributing](docs/CONTRIBUTING.md)** - Development setup and contribution guidelines
+- **[Usage Guide](USAGE.md)** - Detailed usage examples and features
+
+## ✨ Features
+
+### 🔍 **Automatic Detection**
+- Detects Foundry and Hardhat projects automatically
+- Scans all `.sol` files in `src/` and `contracts/` directories
+- Supports complex project structures with libraries
+
+### 📝 **Comprehensive Signature Generation**
+- **Functions**: All visibility levels (public, external, internal, private)
+- **Events**: Including indexed parameters and event topics
+- **Errors**: Custom error types with 4-byte selectors
+- **Constructors**: Contract initialization signatures
+
+### 🔄 **Real-time Updates**
+- Automatic file watching for `.sol` files
+- Instant signature updates when contracts change
+- Background monitoring with VS Code notifications
+
+### 📊 **Multiple Output Formats**
+- **TXT**: Human-readable format
+- **JSON**: Structured data for tooling integration
+- **CSV**: Spreadsheet-friendly format
+- **Markdown**: Documentation-ready format
+
+### 🛠️ **VS Code Integration**
+- Interactive tree view in sidebar
+- Hover tooltips showing signature details
+- Command palette integration
+- Copy-to-clipboard functionality
+
+## 📁 Project Structure
+
 ```
-               Method                       Fn Signature/Method
-       - createPair(address, address) -->      0xc9c65396
-       - transfer(address,uint256)     -->      0xa9059cbb
-       - approve(address,uint256)      -->      0x095ea7b3
-       - etc etc                      -->      some signature
+sigScan/
+├── src/
+│   ├── extension/          # VS Code extension
+│   ├── core/              # Core scanning logic
+│   ├── cli/               # Command-line interface
+│   └── utils/             # Utility functions
+├── examples/              # Example contracts
+├── docs/                  # Documentation
+├── dist/                  # Compiled output
+└── signatures/            # Generated signature files
 ```
-
----
-
-## **NOW AVAILABLE - WORKING IMPLEMENTATION**
 
 ### Quick Start
 ```bash

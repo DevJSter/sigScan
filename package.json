@@ -170,5 +170,25 @@
     "type": "git",
     "url": "https://github.com/DevJSter/sigScan.git"
   },
-  "license": "MIT"
+  "bugs": {
+    "url": "https://github.com/DevJSter/sigScan/issues"
+  },
+  "homepage": "https://github.com/DevJSter/sigScan#readme",
+  "author": {
+    "name": "DevJSter",
+    "url": "https://github.com/DevJSter"
+  },
+  "license": "MIT",
+  "icon": "docs/assets/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "badges": [
+    {
+      "url": "https://img.shields.io/badge/License-MIT-yellow.svg",
+      "href": "https://opensource.org/licenses/MIT",
+      "description": "MIT License"
+    }
+  ]
 }

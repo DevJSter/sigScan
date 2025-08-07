@@ -43,11 +43,22 @@ export class SigScanManager {
         
         this.lastScanResult = await this.scanner.scanProject(rootPath);
         
+        progress.report({ increment: 50, message: 'Exporting signatures...' });
+        
+        // Auto-export signatures after scanning
+        await this.autoExportSignatures();
+        
         progress.report({ increment: 100, message: 'Scan completed' });
         
         vscode.window.showInformationMessage(
-          `Scan completed: ${this.lastScanResult.totalContracts} contracts, ${this.lastScanResult.totalFunctions} functions`
+          `Scan completed: ${this.lastScanResult.totalContracts} contracts, ${this.lastScanResult.totalFunctions} functions. Signatures saved to 'signatures' folder.`
         );
+        
+        // Auto-start watching if configured
+        const config = vscode.workspace.getConfiguration('sigscan');
+        if (config.get('autoScan', true)) {
+          this.startWatching();
+        }
       });
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -72,6 +83,38 @@ export class SigScanManager {
    */
   public stopWatching(): void {
     this.watcher.stopWatching();
+  }
+
+  /**
+   * Auto-export signatures with default settings
+   */
+  private async autoExportSignatures(): Promise<void> {
+    if (!this.lastScanResult) return;
+
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    if (!workspaceFolders) return;
+
+    const config = vscode.workspace.getConfiguration('sigscan');
+    const formats = config.get('outputFormats', ['txt', 'json']) as string[];
+    const includeInternal = !config.get('excludeInternal', true);
+    const includePrivate = config.get('includePrivate', false) as boolean;
+
+    const outputDir = path.join(workspaceFolders[0].uri.fsPath, 'signatures');
+
+    const exportOptions: ExportOptions = {
+      formats: formats as any,
+      outputDir,
+      includeInternal,
+      includePrivate,
+      includeEvents: true,
+      includeErrors: true
+    };
+
+    try {
+      await this.exporter.exportSignatures(this.lastScanResult, exportOptions);
+    } catch (error) {
+      console.error('Auto-export error:', error);
+    }
   }
 
   /**
@@ -170,24 +213,33 @@ export class SigScanManager {
    * Setup watcher event handlers
    */
   private setupWatcherEvents(): void {
-    this.watcher.on('fileChanged', (filePath, contractInfo) => {
+    this.watcher.on('fileChanged', async (filePath, contractInfo) => {
       if (contractInfo && this.lastScanResult) {
         this.lastScanResult.projectInfo.contracts.set(filePath, contractInfo);
         vscode.window.showInformationMessage(`Contract updated: ${path.basename(filePath)}`);
+        
+        // Auto-update signatures when file changes
+        await this.autoExportSignatures();
       }
     });
 
-    this.watcher.on('fileAdded', (filePath, contractInfo) => {
+    this.watcher.on('fileAdded', async (filePath, contractInfo) => {
       if (contractInfo && this.lastScanResult) {
         this.lastScanResult.projectInfo.contracts.set(filePath, contractInfo);
         vscode.window.showInformationMessage(`New contract detected: ${path.basename(filePath)}`);
+        
+        // Auto-update signatures when file is added
+        await this.autoExportSignatures();
       }
     });
 
-    this.watcher.on('fileRemoved', (filePath) => {
+    this.watcher.on('fileRemoved', async (filePath) => {
       if (this.lastScanResult) {
         this.lastScanResult.projectInfo.contracts.delete(filePath);
         vscode.window.showInformationMessage(`Contract removed: ${path.basename(filePath)}`);
+        
+        // Auto-update signatures when file is removed
+        await this.autoExportSignatures();
       }
     });
 

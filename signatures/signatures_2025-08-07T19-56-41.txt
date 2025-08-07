@@ -1,0 +1,4 @@
+# Smart Contract Signatures
+# Generated: 2025-08-07T19:56:41.012Z
+# Project: unknown (/home/madhav/Desktop/projs/sigScan)
+# Total Contracts: 0
