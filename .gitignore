@@ -1,6 +1,5 @@
 node_modules/
 dist/
-*.vsix
 .vscode-test/
 .vscode/settings.json
 *.log
