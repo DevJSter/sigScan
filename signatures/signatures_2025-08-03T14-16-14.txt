@@ -1,4 +1,0 @@
-# Smart Contract Signatures
-# Generated: 2025-08-03T14:16:14.224Z
-# Project: foundry (./examples)
-# Total Contracts: 0

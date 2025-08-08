@@ -43,7 +43,10 @@ program
         includeInternal: options.includeInternal,
         includePrivate: options.includePrivate,
         includeEvents: options.includeEvents,
-        includeErrors: options.includeErrors
+        includeErrors: options.includeErrors,
+        separateByCategory: true,
+        updateExisting: true,
+        deduplicateSignatures: true
       };
 
       await exporter.exportSignatures(scanResult, exportOptions);
@@ -81,7 +84,10 @@ program
         includeInternal: options.includeInternal,
         includePrivate: options.includePrivate,
         includeEvents: options.includeEvents,
-        includeErrors: options.includeErrors
+        includeErrors: options.includeErrors,
+        separateByCategory: true,
+        updateExisting: true,
+        deduplicateSignatures: true
       };
 
       await exporter.exportSignatures(scanResult, exportOptions);

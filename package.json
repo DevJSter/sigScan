@@ -2,7 +2,7 @@
   "name": "sigscan",
   "displayName": "SigScan - Smart Contract Signature Scanner",
   "description": "Automatically scan and generate method signatures for Solidity contracts in Foundry/Hardhat projects",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "devjster",
   "engines": {
     "vscode": "^1.74.0",
@@ -179,7 +179,6 @@
     "url": "https://github.com/DevJSter"
   },
   "license": "MIT",
-  "icon": "docs/assets/icon.png",
   "galleryBanner": {
     "color": "#1e1e1e",
     "theme": "dark"

@@ -41,6 +41,7 @@ export interface ContractInfo {
   events: EventSignature[];
   errors: ErrorSignature[];
   lastModified: Date;
+  category: ContractCategory;
 }
 
 export interface ProjectInfo {
@@ -48,6 +49,7 @@ export interface ProjectInfo {
   rootPath: string;
   contractDirs: string[];
   contracts: Map<string, ContractInfo>;
+  inheritedContracts: Set<string>; // Track inherited contracts from libs
 }
 
 export interface ScanResult {
@@ -57,7 +59,11 @@ export interface ScanResult {
   totalEvents: number;
   totalErrors: number;
   scanTime: Date;
+  contractsByCategory: Map<ContractCategory, ContractInfo[]>;
+  uniqueSignatures: Map<string, FunctionSignature | EventSignature | ErrorSignature>;
 }
+
+export type ContractCategory = 'contracts' | 'libs' | 'tests';
 
 export interface ExportOptions {
   formats: ('txt' | 'json' | 'csv' | 'md')[];
@@ -66,4 +72,7 @@ export interface ExportOptions {
   includePrivate: boolean;
   includeEvents: boolean;
   includeErrors: boolean;
+  separateByCategory?: boolean;
+  updateExisting?: boolean;
+  deduplicateSignatures?: boolean;
 }

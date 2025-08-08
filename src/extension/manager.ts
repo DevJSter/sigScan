@@ -107,7 +107,10 @@ export class SigScanManager {
       includeInternal,
       includePrivate,
       includeEvents: true,
-      includeErrors: true
+      includeErrors: true,
+      separateByCategory: true,
+      updateExisting: true,
+      deduplicateSignatures: true
     };
 
     try {
@@ -142,7 +145,10 @@ export class SigScanManager {
       includeInternal,
       includePrivate,
       includeEvents: true,
-      includeErrors: true
+      includeErrors: true,
+      separateByCategory: true,
+      updateExisting: true,
+      deduplicateSignatures: true
     };
 
     try {
