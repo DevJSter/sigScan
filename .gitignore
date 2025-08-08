@@ -7,3 +7,14 @@ dist/
 .env
 coverage/
 .nyc_output/
+
+# Extension build artifacts
+*.vsix
+temp/
+
+# Example project signatures (generated for testing)
+examples/signatures/
+
+# Don't ignore releases directory - we want to track built extensions
+!releases/
+releases/*.vsix

@@ -30,7 +30,8 @@ export class SolidityParser {
         functions,
         events,
         errors,
-        lastModified: stats.mtime
+        lastModified: stats.mtime,
+        category: 'contracts' // Default category, will be updated by scanner
       };
     } catch (error) {
       console.error(`Error parsing file ${filePath}:`, error);
@@ -42,8 +43,8 @@ export class SolidityParser {
    * Extract contract name from Solidity content
    */
   private extractContractName(content: string): string | null {
-    const contractMatch = content.match(/contract\s+(\w+)/);
-    return contractMatch ? contractMatch[1] : null;
+    const contractMatch = content.match(/(contract|library|interface)\s+(\w+)/);
+    return contractMatch ? contractMatch[2] : null;
   }
 
   /**
