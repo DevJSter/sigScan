@@ -1,10 +1,10 @@
-# Updated: 2025-08-08T19:12:39.323Z
+# Updated: 2025-08-14T18:42:55.511Z
 # Previous content replaced
 
 # Smart Contract Signatures
 # Category: CONTRACTS
-# Generated: 2025-08-08T19:12:39.322Z
-# Project: foundry (examples/)
+# Generated: 2025-08-14T18:42:55.506Z
+# Project: foundry (/Users/qoneqt/Desktop/shubham/sigscan/examples)
 # Total Contracts in Category: 2
 
 ## Contract: IERC20 (DEXRouter.sol)

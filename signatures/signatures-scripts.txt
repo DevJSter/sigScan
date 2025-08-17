@@ -1,0 +1,35 @@
+# Updated: 2025-08-15T14:36:57.225Z
+# Previous content replaced
+
+# Smart Contract Signatures
+# Category: SCRIPTS
+# Generated: 2025-08-15T14:36:57.224Z
+# Project: unknown (/Users/qoneqt/Desktop/shubham/sigscan)
+# Total Contracts in Category: 2
+
+## Contract: SampleDeployScript (SampleDeployScript.s.sol)
+
+### Functions:
+deploy(Config)                           --> 0xee5dfe57
+batchDeploy(Config[])                    --> 0x753f8b91
+estimateGas(Config)                      --> 0x6d098d6f
+
+### Events:
+DeploymentCompleted(address,uint256)     --> 0x10313fa80e016e399eb403e4f43f6dba01e3e4f2b15e5af2a1cc38cb4b0530f9
+
+### Errors:
+InvalidConfiguration(string)             --> 0x0fb7fdc8
+
+## Contract: TestDeployScript (TestDeployScript.s.sol)
+
+### Functions:
+deploy()                                 --> 0x775c300c
+deployWithParams(string,uint256)         --> 0x9f6ceb74
+batchDeploy(string[])                    --> 0x11869de9
+constructor(string)                      --> 0xd52b6b8d
+
+### Events:
+Deployed(address,string)                 --> 0xd77691bae88eab2319cedd12dff464c41a42aff2533c6210c89662b695b731e5
+
+### Errors:
+DeploymentFailed(string)                 --> 0x20631f91

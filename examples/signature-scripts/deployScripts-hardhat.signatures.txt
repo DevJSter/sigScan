@@ -1,0 +1,14 @@
+# HARDHAT Deployment Script Signatures
+# Generated on: 2025-08-14T18:50:13.903Z
+# Total Scripts: 1
+
+# === HardhatDeployScript (scripts/HardhatDeployScript.sol) ===
+# Functions (3):
+deployToken(DeploymentConfig)            --> 0xa914e36b
+deployMultipleContracts(string[],string[],uint256[]) --> 0x8ae7c3ec
+getDeploymentGas(string)                 --> 0xa3fc05e7
+# Events (1):
+ContractDeployed(address,string)         --> 0x1d2cdeb916b6deaba04691992f0644f09c3074ecd87caa51ded4a31ca49e590a
+# Errors (1):
+DeploymentError(string)                  --> 0xe0c83a2f
+

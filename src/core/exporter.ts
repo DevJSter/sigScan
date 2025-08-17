@@ -26,8 +26,8 @@ export class SignatureExporter {
     const deduplicateSignatures = options.deduplicateSignatures !== false; // Default to true
 
     if (separateByCategory) {
-      // Export by categories: contracts, libs, tests
-      for (const category of ['contracts', 'libs', 'tests'] as ContractCategory[]) {
+      // Export by categories: contracts, libs, tests, scripts
+      for (const category of ['contracts', 'libs', 'tests', 'scripts'] as ContractCategory[]) {
         const categoryContracts = scanResult.contractsByCategory.get(category) || [];
         if (categoryContracts.length > 0) {
           const categoryResult = this.createCategoryResult(scanResult, categoryContracts, category);
@@ -37,6 +37,9 @@ export class SignatureExporter {
           }
         }
       }
+
+      // Special handling for deployment scripts - create deployScripts.signatures.txt
+      await this.exportDeploymentScripts(scanResult, options);
     } else {
       // Export all together (legacy mode)
       for (const format of options.formats) {
@@ -703,6 +706,91 @@ export class SignatureExporter {
       default:
         return content;
     }
+  }
+
+  /**
+   * Export deployment scripts to signature-scripts directory
+   */
+  private async exportDeploymentScripts(scanResult: ScanResult, options: ExportOptions): Promise<void> {
+    const scriptsContracts = scanResult.contractsByCategory.get('scripts') || [];
+    if (scriptsContracts.length === 0) {
+      return;
+    }
+
+    // Create signature-scripts directory
+    const signatureScriptsDir = path.join(scanResult.projectInfo.rootPath, 'signature-scripts');
+    if (!fs.existsSync(signatureScriptsDir)) {
+      fs.mkdirSync(signatureScriptsDir, { recursive: true });
+    }
+
+    // Determine the appropriate filename based on project type
+    const projectType = scanResult.projectInfo.type;
+    let filename = 'deployScripts.signatures.txt';
+    
+    if (projectType === 'hardhat') {
+      filename = 'deployScripts-hardhat.signatures.txt';
+    } else if (projectType === 'foundry') {
+      filename = 'deployScripts-foundry.signatures.txt';
+    }
+
+    const filePath = path.join(signatureScriptsDir, filename);
+
+    // Generate deployment script signatures
+    const content = this.generateDeploymentScriptSignatures(scriptsContracts, scanResult.projectInfo);
+    
+    // Write to file
+    fs.writeFileSync(filePath, content, 'utf-8');
+
+    console.log(`✓ Exported deployment script signatures to ${path.relative(scanResult.projectInfo.rootPath, filePath)}`);
+  }
+
+  /**
+   * Generate deployment script signatures content
+   */
+  private generateDeploymentScriptSignatures(scriptsContracts: ContractInfo[], projectInfo: any): string {
+    const timestamp = new Date().toISOString();
+    const projectType = projectInfo.type.toUpperCase();
+    
+    let content = `# ${projectType} Deployment Script Signatures\n`;
+    content += `# Generated on: ${timestamp}\n`;
+    content += `# Total Scripts: ${scriptsContracts.length}\n\n`;
+
+    // Group by script file
+    scriptsContracts.forEach(script => {
+      const relativePath = path.relative(projectInfo.rootPath, script.filePath);
+      content += `# === ${script.name} (${relativePath}) ===\n`;
+      
+      // Add functions with full signatures and selectors
+      if (script.functions.length > 0) {
+        content += `# Functions (${script.functions.length}):\n`;
+        script.functions.forEach(func => {
+          const paddedSignature = func.signature.padEnd(40);
+          content += `${paddedSignature} --> ${func.selector}\n`;
+        });
+      }
+
+      // Add events with full signatures and selectors
+      if (script.events.length > 0) {
+        content += `# Events (${script.events.length}):\n`;
+        script.events.forEach(event => {
+          const paddedSignature = event.signature.padEnd(40);
+          content += `${paddedSignature} --> ${event.selector}\n`;
+        });
+      }
+
+      // Add errors with full signatures and selectors
+      if (script.errors.length > 0) {
+        content += `# Errors (${script.errors.length}):\n`;
+        script.errors.forEach(error => {
+          const paddedSignature = error.signature.padEnd(40);
+          content += `${paddedSignature} --> ${error.selector}\n`;
+        });
+      }
+
+      content += '\n';
+    });
+
+    return content;
   }
 
   /**

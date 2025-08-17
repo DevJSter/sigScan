@@ -1,0 +1,227 @@
+{
+  "metadata": {
+    "category": "scripts",
+    "generatedAt": "2025-08-15T14:36:57.224Z",
+    "projectType": "unknown",
+    "projectPath": "/Users/qoneqt/Desktop/shubham/sigscan",
+    "totalContractsInCategory": 2,
+    "uniqueFunctions": 7,
+    "uniqueEvents": 2,
+    "uniqueErrors": 2,
+    "lastUpdated": "2025-08-15T14:36:57.225Z",
+    "note": "Previous content replaced"
+  },
+  "signatures": {
+    "functions": [
+      {
+        "name": "deploy",
+        "signature": "deploy(Config)",
+        "selector": "0xee5dfe57",
+        "visibility": "external",
+        "stateMutability": "payable",
+        "inputs": [
+          {
+            "type": "Config",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "contractName": "SampleDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/SampleDeployScript.s.sol"
+      },
+      {
+        "name": "batchDeploy",
+        "signature": "batchDeploy(Config[])",
+        "selector": "0x753f8b91",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "Config[]",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address[]",
+            "name": "memory"
+          }
+        ],
+        "contractName": "SampleDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/SampleDeployScript.s.sol"
+      },
+      {
+        "name": "estimateGas",
+        "signature": "estimateGas(Config)",
+        "selector": "0x6d098d6f",
+        "visibility": "external",
+        "stateMutability": "pure",
+        "inputs": [
+          {
+            "type": "Config",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ],
+        "contractName": "SampleDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/SampleDeployScript.s.sol"
+      },
+      {
+        "name": "deploy",
+        "signature": "deploy()",
+        "selector": "0x775c300c",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "contractName": "TestDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/TestDeployScript.s.sol"
+      },
+      {
+        "name": "deployWithParams",
+        "signature": "deployWithParams(string,uint256)",
+        "selector": "0x9f6ceb74",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "memory"
+          },
+          {
+            "type": "uint256",
+            "name": "value"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "contractName": "TestDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/TestDeployScript.s.sol"
+      },
+      {
+        "name": "batchDeploy",
+        "signature": "batchDeploy(string[])",
+        "selector": "0x11869de9",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "string[]",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address[]",
+            "name": "memory"
+          }
+        ],
+        "contractName": "TestDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/TestDeployScript.s.sol"
+      },
+      {
+        "name": "constructor",
+        "signature": "constructor(string)",
+        "selector": "0xd52b6b8d",
+        "visibility": "public",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "memory"
+          }
+        ],
+        "outputs": [],
+        "contractName": "TestDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/TestDeployScript.s.sol"
+      }
+    ],
+    "events": [
+      {
+        "name": "DeploymentCompleted",
+        "signature": "DeploymentCompleted(address,uint256)",
+        "selector": "0x10313fa80e016e399eb403e4f43f6dba01e3e4f2b15e5af2a1cc38cb4b0530f9",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "indexed",
+            "indexed": true
+          },
+          {
+            "type": "uint256",
+            "name": "timestamp",
+            "indexed": false
+          }
+        ],
+        "contractName": "SampleDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/SampleDeployScript.s.sol"
+      },
+      {
+        "name": "Deployed",
+        "signature": "Deployed(address,string)",
+        "selector": "0xd77691bae88eab2319cedd12dff464c41a42aff2533c6210c89662b695b731e5",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "indexed",
+            "indexed": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "indexed": false
+          }
+        ],
+        "contractName": "TestDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/TestDeployScript.s.sol"
+      }
+    ],
+    "errors": [
+      {
+        "name": "InvalidConfiguration",
+        "signature": "InvalidConfiguration(string)",
+        "selector": "0x0fb7fdc8",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "message"
+          }
+        ],
+        "contractName": "SampleDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/SampleDeployScript.s.sol"
+      },
+      {
+        "name": "DeploymentFailed",
+        "signature": "DeploymentFailed(string)",
+        "selector": "0x20631f91",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "reason"
+          }
+        ],
+        "contractName": "TestDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/script/TestDeployScript.s.sol"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+# Updated: 2025-08-14T18:43:05.162Z
+# Previous content replaced
+
+# Smart Contract Signatures
+# Category: SCRIPTS
+# Generated: 2025-08-14T18:43:05.158Z
+# Project: hardhat (/Users/qoneqt/Desktop/shubham/sigscan/examples)
+# Total Contracts in Category: 1
+
+## Contract: HardhatDeployScript (HardhatDeployScript.sol)
+
+### Functions:
+deployToken(DeploymentConfig)            --> 0xa914e36b
+deployMultipleContracts(string[],string[],uint256[]) --> 0x8ae7c3ec
+getDeploymentGas(string)                 --> 0xa3fc05e7
+
+### Events:
+ContractDeployed(address,string)         --> 0x1d2cdeb916b6deaba04691992f0644f09c3074ecd87caa51ded4a31ca49e590a
+
+### Errors:
+DeploymentError(string)                  --> 0xe0c83a2f

@@ -1,0 +1,27 @@
+# Updated: 2025-08-14T18:42:19.509Z
+# Previous content replaced
+
+# Smart Contract Signatures
+# Category: SCRIPTS
+# Generated: 2025-08-14T18:42:19.504Z
+# Project: foundry (/Users/qoneqt/Desktop/shubham/sigscan/examples)
+# Total Contracts in Category: 2
+
+## Contract: DeployDEXRouter (DeployDEXRouter.s.sol)
+
+### Functions:
+run()                                    --> 0xc0406226
+deployRouter()                           --> 0x9ec41b82
+verifyDeployment(address)                --> 0xf31f370b
+
+### Events:
+RouterDeployed(address,address,address)  --> 0x26e965c9a3bc0ed153de34dbe2bf3e57e4668bfa4156ac2f1d74d5a9fc9aa50b
+
+### Errors:
+DeploymentFailed(string)                 --> 0x20631f91
+
+## Contract: DeploySimpleToken (DeploySimpleToken.s.sol)
+
+### Functions:
+setUp()                                  --> 0x0a9254e4
+deployWithCustomParams(string,string,uint256) --> 0x61f08001

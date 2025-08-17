@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "category": "scripts",
+    "generatedAt": "2025-08-14T18:42:19.504Z",
+    "projectType": "foundry",
+    "projectPath": "/Users/qoneqt/Desktop/shubham/sigscan/examples",
+    "totalContractsInCategory": 2,
+    "uniqueFunctions": 5,
+    "uniqueEvents": 1,
+    "uniqueErrors": 1,
+    "lastUpdated": "2025-08-14T18:42:19.510Z",
+    "note": "Previous content replaced"
+  },
+  "signatures": {
+    "functions": [
+      {
+        "name": "run",
+        "signature": "run()",
+        "selector": "0xc0406226",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [],
+        "contractName": "DeploySimpleToken",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeploySimpleToken.s.sol"
+      },
+      {
+        "name": "deployRouter",
+        "signature": "deployRouter()",
+        "selector": "0x9ec41b82",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "contractName": "DeployDEXRouter",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeployDEXRouter.s.sol"
+      },
+      {
+        "name": "verifyDeployment",
+        "signature": "verifyDeployment(address)",
+        "selector": "0xf31f370b",
+        "visibility": "external",
+        "stateMutability": "view",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "router"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "bool",
+            "name": ""
+          }
+        ],
+        "contractName": "DeployDEXRouter",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeployDEXRouter.s.sol"
+      },
+      {
+        "name": "setUp",
+        "signature": "setUp()",
+        "selector": "0x0a9254e4",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [],
+        "contractName": "DeploySimpleToken",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeploySimpleToken.s.sol"
+      },
+      {
+        "name": "deployWithCustomParams",
+        "signature": "deployWithCustomParams(string,string,uint256)",
+        "selector": "0x61f08001",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "memory"
+          },
+          {
+            "type": "string",
+            "name": "memory"
+          },
+          {
+            "type": "uint256",
+            "name": "supply"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "contractName": "DeploySimpleToken",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeploySimpleToken.s.sol"
+      }
+    ],
+    "events": [
+      {
+        "name": "RouterDeployed",
+        "signature": "RouterDeployed(address,address,address)",
+        "selector": "0x26e965c9a3bc0ed153de34dbe2bf3e57e4668bfa4156ac2f1d74d5a9fc9aa50b",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "indexed",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "indexed",
+            "indexed": true
+          },
+          {
+            "type": "address",
+            "name": "indexed",
+            "indexed": true
+          }
+        ],
+        "contractName": "DeployDEXRouter",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeployDEXRouter.s.sol"
+      }
+    ],
+    "errors": [
+      {
+        "name": "DeploymentFailed",
+        "signature": "DeploymentFailed(string)",
+        "selector": "0x20631f91",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "reason"
+          }
+        ],
+        "contractName": "DeployDEXRouter",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/script/DeployDEXRouter.s.sol"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+# FOUNDRY Deployment Script Signatures
+# Generated on: 2025-08-14T18:49:03.813Z
+# Total Scripts: 2
+
+# === DeployDEXRouter (script/DeployDEXRouter.s.sol) ===
+# Functions (3):
+run()                                    --> 0xc0406226
+deployRouter()                           --> 0x9ec41b82
+verifyDeployment(address)                --> 0xf31f370b
+# Events (1):
+RouterDeployed(address,address,address)  --> 0x26e965c9a3bc0ed153de34dbe2bf3e57e4668bfa4156ac2f1d74d5a9fc9aa50b
+# Errors (1):
+DeploymentFailed(string)                 --> 0x20631f91
+
+# === DeploySimpleToken (script/DeploySimpleToken.s.sol) ===
+# Functions (3):
+run()                                    --> 0xc0406226
+setUp()                                  --> 0x0a9254e4
+deployWithCustomParams(string,string,uint256) --> 0x61f08001
+

@@ -24,6 +24,7 @@ export class ProjectScanner {
     contractsByCategory.set('contracts', []);
     contractsByCategory.set('libs', []);
     contractsByCategory.set('tests', []);
+    contractsByCategory.set('scripts', []);
 
     // Scan all contract directories
     for (const contractDir of projectInfo.contractDirs) {
@@ -42,6 +43,28 @@ export class ProjectScanner {
             const categoryContracts = contractsByCategory.get(contractInfo.category) || [];
             categoryContracts.push(contractInfo);
             contractsByCategory.set(contractInfo.category, categoryContracts);
+          }
+        }
+      }
+    }
+
+    // Scan all script directories
+    for (const scriptDir of projectInfo.scriptDirs) {
+      const fullPath = path.join(rootPath, scriptDir);
+      if (fs.existsSync(fullPath)) {
+        const scriptFiles = await this.findSolidityFiles(fullPath);
+        
+        for (const filePath of scriptFiles) {
+          const contractInfo = this.parser.parseFile(filePath);
+          if (contractInfo) {
+            // Scripts are always categorized as 'scripts'
+            contractInfo.category = 'scripts';
+            contracts.set(filePath, contractInfo);
+            
+            // Add to category map
+            const categoryContracts = contractsByCategory.get('scripts') || [];
+            categoryContracts.push(contractInfo);
+            contractsByCategory.set('scripts', categoryContracts);
           }
         }
       }
@@ -95,6 +118,9 @@ export class ProjectScanner {
     
     if (relativePath.includes('test') || relativePath.includes('Test')) {
       return 'tests';
+    }
+    if (relativePath.includes('script') || relativePath.includes('Script') || relativePath.includes('deploy')) {
+      return 'scripts';
     }
     if (relativePath.includes('lib/') || relativePath.includes('libs/')) {
       return 'libs';
@@ -183,22 +209,27 @@ export class ProjectScanner {
 
     let type: 'foundry' | 'hardhat' | 'unknown' = 'unknown';
     let contractDirs: string[] = [];
+    let scriptDirs: string[] = [];
 
     if (fs.existsSync(foundryConfig)) {
       type = 'foundry';
       contractDirs = ['src', 'lib'];
+      scriptDirs = ['script'];
     } else if (fs.existsSync(hardhatConfigJs) || fs.existsSync(hardhatConfigTs)) {
       type = 'hardhat';
       contractDirs = ['contracts'];
+      scriptDirs = ['scripts', 'deploy'];
     } else {
       // Default fallback
       contractDirs = ['src', 'contracts'];
+      scriptDirs = ['scripts', 'script', 'deploy'];
     }
 
     return {
       type,
       rootPath,
       contractDirs,
+      scriptDirs,
       contracts: new Map(),
       inheritedContracts: new Set()
     };
@@ -268,6 +299,26 @@ export class ProjectScanner {
           if (!projectInfo.contracts.has(filePath)) {
             const newContract = this.parser.parseFile(filePath);
             if (newContract) {
+              newContract.category = this.categorizeContract(filePath, projectInfo.rootPath);
+              changed.push(newContract);
+              projectInfo.contracts.set(filePath, newContract);
+            }
+          }
+        }
+      }
+    }
+
+    // Check for new script files
+    for (const scriptDir of projectInfo.scriptDirs) {
+      const fullPath = path.join(projectInfo.rootPath, scriptDir);
+      if (fs.existsSync(fullPath)) {
+        const scriptFiles = await this.findSolidityFiles(fullPath);
+        
+        for (const filePath of scriptFiles) {
+          if (!projectInfo.contracts.has(filePath)) {
+            const newContract = this.parser.parseFile(filePath);
+            if (newContract) {
+              newContract.category = 'scripts';
               changed.push(newContract);
               projectInfo.contracts.set(filePath, newContract);
             }

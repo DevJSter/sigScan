@@ -48,6 +48,7 @@ export interface ProjectInfo {
   type: 'foundry' | 'hardhat' | 'unknown';
   rootPath: string;
   contractDirs: string[];
+  scriptDirs: string[];
   contracts: Map<string, ContractInfo>;
   inheritedContracts: Set<string>; // Track inherited contracts from libs
 }
@@ -63,7 +64,7 @@ export interface ScanResult {
   uniqueSignatures: Map<string, FunctionSignature | EventSignature | ErrorSignature>;
 }
 
-export type ContractCategory = 'contracts' | 'libs' | 'tests';
+export type ContractCategory = 'contracts' | 'libs' | 'tests' | 'scripts';
 
 export interface ExportOptions {
   formats: ('txt' | 'json' | 'csv' | 'md')[];

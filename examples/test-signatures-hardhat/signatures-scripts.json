@@ -1,0 +1,125 @@
+{
+  "metadata": {
+    "category": "scripts",
+    "generatedAt": "2025-08-14T18:43:05.158Z",
+    "projectType": "hardhat",
+    "projectPath": "/Users/qoneqt/Desktop/shubham/sigscan/examples",
+    "totalContractsInCategory": 1,
+    "uniqueFunctions": 3,
+    "uniqueEvents": 1,
+    "uniqueErrors": 1,
+    "lastUpdated": "2025-08-14T18:43:05.162Z",
+    "note": "Previous content replaced"
+  },
+  "signatures": {
+    "functions": [
+      {
+        "name": "deployToken",
+        "signature": "deployToken(DeploymentConfig)",
+        "selector": "0xa914e36b",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "DeploymentConfig",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address",
+            "name": ""
+          }
+        ],
+        "contractName": "HardhatDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/scripts/HardhatDeployScript.sol"
+      },
+      {
+        "name": "deployMultipleContracts",
+        "signature": "deployMultipleContracts(string[],string[],uint256[])",
+        "selector": "0x8ae7c3ec",
+        "visibility": "external",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "type": "string[]",
+            "name": "memory"
+          },
+          {
+            "type": "string[]",
+            "name": "memory"
+          },
+          {
+            "type": "uint256[]",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "address[]",
+            "name": "memory"
+          }
+        ],
+        "contractName": "HardhatDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/scripts/HardhatDeployScript.sol"
+      },
+      {
+        "name": "getDeploymentGas",
+        "signature": "getDeploymentGas(string)",
+        "selector": "0xa3fc05e7",
+        "visibility": "external",
+        "stateMutability": "pure",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "memory"
+          }
+        ],
+        "outputs": [
+          {
+            "type": "uint256",
+            "name": ""
+          }
+        ],
+        "contractName": "HardhatDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/scripts/HardhatDeployScript.sol"
+      }
+    ],
+    "events": [
+      {
+        "name": "ContractDeployed",
+        "signature": "ContractDeployed(address,string)",
+        "selector": "0x1d2cdeb916b6deaba04691992f0644f09c3074ecd87caa51ded4a31ca49e590a",
+        "inputs": [
+          {
+            "type": "address",
+            "name": "indexed",
+            "indexed": true
+          },
+          {
+            "type": "string",
+            "name": "name",
+            "indexed": false
+          }
+        ],
+        "contractName": "HardhatDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/scripts/HardhatDeployScript.sol"
+      }
+    ],
+    "errors": [
+      {
+        "name": "DeploymentError",
+        "signature": "DeploymentError(string)",
+        "selector": "0xe0c83a2f",
+        "inputs": [
+          {
+            "type": "string",
+            "name": "message"
+          }
+        ],
+        "contractName": "HardhatDeployScript",
+        "filePath": "/Users/qoneqt/Desktop/shubham/sigscan/examples/scripts/HardhatDeployScript.sol"
+      }
+    ]
+  }
+}
