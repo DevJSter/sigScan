@@ -43,9 +43,11 @@ jobs:
       run: npm run compile
       
     - name: Install VSCE
-      run: npm install -g @vscode/vsce
+      run: npm install -g @vscode/vsce@latest
       
     - name: Package extension
+      env:
+        NODE_OPTIONS: "--experimental-global-webcrypto"
       run: vsce package --no-dependencies
       
     - name: Upload extension artifact
@@ -67,7 +69,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20.x'
+        node-version: '22.x'
         cache: 'npm'
         
     - name: Install dependencies
@@ -77,9 +79,11 @@ jobs:
       run: npm run compile
       
     - name: Install VSCE
-      run: npm install -g @vscode/vsce
+      run: npm install -g @vscode/vsce@latest
       
     - name: Package extension
+      env:
+        NODE_OPTIONS: "--experimental-global-webcrypto"
       run: vsce package --no-dependencies
       
     - name: Get package version
@@ -124,7 +128,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20.x'
+        node-version: '22.x'
         cache: 'npm'
         
     - name: Install dependencies
@@ -134,7 +138,7 @@ jobs:
       run: npm run compile
       
     - name: Install VSCE
-      run: npm install -g @vscode/vsce
+      run: npm install -g @vscode/vsce@latest
       
     - name: Publish to VS Code Marketplace
       if: env.VSCE_PAT != ''
